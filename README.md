@@ -6,9 +6,11 @@ The code is used for my Animal Themed deck at https://www.thegamecrafter.com/gam
 
 ## Important sections and info
 
-The algorithm is a binary code of letters. In the base effect, cards either have letters for the left side of the keyboard or the right side.
+The original algorithm is a binary code of letters. In the base effect, cards either have letters for the left side of the keyboard or the right side.
 The list of 32 5-letter words is numbered 0 to 31. The first letter position is worth 16 points, the second letter is worth 8 points, and so on, so
-that each word has a unique position in the list in binary numbers.
+that each word has a unique position in the list in binary numbers. So, the word TIGER is equal to 19, because it is T (16 points), 
+I (does not score 8 points), G (does not score 4 points), E (scores 2 points), R (scores 1 point). The letters scoring their binary position are 
+roughly the left side of the QWERTY keyboard. A word like ONION, all on the right side of the keyboard, scores a 0. 
 
 The `score-word` function accepts a word and an optional regex. (If no regex is supplied, it will use the default regex as in the original effect.)
 It will provide the binary score of the word given.
