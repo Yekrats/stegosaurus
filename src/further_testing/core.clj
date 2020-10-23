@@ -103,7 +103,14 @@
         (filter #(is31? % animals) $)
         )                                                 ; ({:re "[abcdefghijklm]", :sc 19} ...)
   )
-
+(defn all-english-words-sorted []
+  (loop [x 0]
+    (if (= x 32)
+      nil
+      (recur
+        (do
+          (println x ": " (filter #(= x (score-word % (re-pattern stegregex))) words))
+          (inc x))))))
 
 (comment
 
@@ -167,15 +174,7 @@
   (is31? stegregex steg)                                    ; true
   (is31? stegregex animals)                                 ; false
 
-  (loop [x 0]
-    (if (= x 32)
-      nil
-      (recur
-        (do
-          (println x ": " (filter #(= x (score-word % (re-pattern stegregex))) words))
-          (inc x)))
-      )
-    )
+
 
   (loop [x 0]
     (if (= x 32)
