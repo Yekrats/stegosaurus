@@ -61,7 +61,7 @@
        (filter #(= 5 (count %)))
        )
   )
-(defn is31? "Checks to see if a particular word has a perfect score of 31"
+(defn is31? "Checks to see if a particular wordlist has a perfect score of 31"
   [re wordlist]
   (loop [i 0 f false]
     (if (or (= i 32) f)
@@ -92,11 +92,7 @@
         (+ x 1)
         (if (> (count (filter #(= x (score-word % (re-pattern re))) wordlist)) 0)
           (+ acc 1)
-          acc
-          )
-        )
-      )
-    ))
+          acc)))))
 
 (def alpha-combo2
   (as-> "abcdefghijklmnopqrstuvwxyz" $
