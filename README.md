@@ -1,5 +1,9 @@
 # Stegosaurus
 
+I'm a magician in addition to being a coder. I used Clojure to help develop the algorithm behind a magic trick to create my
+own version of the trick. The original trick (not invented by me) is called "Stegosaurus" and marketed by Penguin Magic.
+I currently sell my enhancements made by my Clojure developments on The Game Crafter.
+
 Private code for Scott Starkey's "Stegosaurus" project.
 See a demo of the original trick at https://www.penguinmagic.com/p/6252
 The code is used for my Animal Themed deck at https://www.thegamecrafter.com/games/stegosaurus-animal-themed-poker-size
@@ -26,8 +30,5 @@ regexes, I plugged them into a simple loop to give me the proper animal list to 
 
 ## License
 
-Copyright © 2020
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
-
+Copyright © 2020.
+Do not reproduce without permission.
