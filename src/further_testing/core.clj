@@ -3,7 +3,6 @@
   (:require [clojure.math.combinatorics :as combo])
   )
 
-
 (defn check-letter?
   ([letter]
    (check-letter? letter "[qwertasdfgzxcv]"))
@@ -25,23 +24,16 @@
          (+ acc
             (if (check-letter? (str (nth word x)) re)
               (reduce * (repeat (- 4 x) 2))
-              0
-              )
-            )
-         )
-       )
-     ))
+              0))))))
   ([word]
-   (score-word word "[qwertasdfzxcvbQWERTASDFZXCVB]"))
-  )
+   (score-word word "[qwertasdfzxcvbQWERTASDFZXCVB]")))
 
 (defn check-letter
   ([letter]
    (check-letter? letter "[qwertasdfgzxcv]"))
 
   ([letter re]
-   (check-letter? letter re))
-  )
+   (check-letter? letter re)))
 
 (def words
   (->> (slurp "./resources/google-10000-english-usa.txt") ; (slurp "/usr/share/dict/words")
@@ -49,18 +41,15 @@
        (map str/trim)
        set
        (filter #(= 5 (count %)))
-       (filter #(Character/isLowerCase (first %)))
-       )
-  )
+       (filter #(Character/isLowerCase (first %)))))
 
 (def animals
   (->> (slurp "./resources/animals.txt")
        str/split-lines
        (map str/trim)
        set
-       (filter #(= 5 (count %)))
-       )
-  )
+       (filter #(= 5 (count %)))))
+
 (defn is31? "Checks to see if a particular wordlist has a perfect score of 31"
   [re wordlist]
   (loop [i 0 f false]
@@ -73,6 +62,7 @@
       )
     )
   )
+
 (def steg
   (->> (slurp "./resources/steg.txt")
        str/split-lines
@@ -80,19 +70,20 @@
        set
        )
   )
+
 (defn regex-score "Takes in a regex and a wordlist. Provides a score. This is how many hits for the wordlist & regex."
   [re wordlist]
-  ; (regex-score "[qwertasdfzxcvb]" animals)
-  ; => 26
+                                        ; (regex-score "[qwertasdfzxcvb]" animals)
+                                        ; => 26
 
   (loop [x 0 acc 0]
     (if (= x 32)
       acc
       (recur
-        (+ x 1)
-        (if (> (count (filter #(= x (score-word % (re-pattern re))) wordlist)) 0)
-          (+ acc 1)
-          acc)))))
+       (+ x 1)
+       (if (> (count (filter #(= x (score-word % (re-pattern re))) wordlist)) 0)
+         (+ acc 1)
+         acc)))))
 
 (def alpha-combo2
   (as-> "abcdefghijklmnopqrstuvwxyz" $
@@ -103,14 +94,15 @@
         (filter #(is31? % animals) $)
         )                                                 ; ({:re "[abcdefghijklm]", :sc 19} ...)
   )
+
 (defn all-english-words-sorted []
   (loop [x 0]
     (if (= x 32)
       nil
       (recur
-        (do
-          (println x ": " (filter #(= x (score-word % (re-pattern stegregex))) words))
-          (inc x))))))
+       (do
+         (println x ": " (filter #(= x (score-word % (re-pattern stegregex))) words))
+         (inc x))))))
 
 (comment
 
@@ -241,25 +233,7 @@
       (cons farg (cons farg (apply dupe rargs)))))
 
 
-  (compr [1 1 2 3 3 2 2 3])
-  (compr [1 2])
-  (compr [1 2 3])
-  (compr [1])
-  (doc mapcat)
 
   (__ 0 [:a :b :c]) {:a 0 :b 0 :c 0})
-  (defn m [x s] (mapcat #([% x]) [s]))
-(m 0 [:a :b :c])
-
-
-
-  )
-
-
 ;
 ;end comment
-
-
-
-
-
